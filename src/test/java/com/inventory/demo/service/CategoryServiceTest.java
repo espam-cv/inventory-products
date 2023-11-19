@@ -43,4 +43,12 @@ class CategoryServiceTest {
         Category categoryData = categoryService.saveCategory(category);
         Assert.isTrue(categoryData.getId().equals("id"),"SUCCESS");
     }
+    @Test
+    void shouldEdictCategory(){
+        Category category = new Category("id","name","description");
+        Mockito.when(categoryRepository.findById(Mockito.anyString())).thenReturn(Optional.of(category));
+        Mockito.when(categoryRepository.save(Mockito.any(Category.class))).thenReturn(category);
+        Category categoryData = categoryService.edictCategoryById(category);
+        Assert.isTrue(categoryData.getId().equals("id"),"SUCCESS");
+    }
 }

@@ -8,4 +8,5 @@ public interface CategoryService {
     List<Category> getAllCategory();
     Category getCategoryById(String id);
     Category saveCategory(Category category);
+    Category edictCategoryById(Category category);
 }
