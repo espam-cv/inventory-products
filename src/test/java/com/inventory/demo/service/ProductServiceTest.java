@@ -36,4 +36,9 @@ class ProductServiceTest {
         Product productData = productService.saveProduct(product);
         Assert.isTrue(productData.getId().equals("id"),"SUCCESS");
     }
+    @Test
+    void shouldDelete(){
+        Mockito.doNothing().when(productRepository).deleteById(Mockito.any(String.class));
+        productService.deleteProductById("id");
+    }
 }
