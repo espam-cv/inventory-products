@@ -16,6 +16,10 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService){
         this.categoryService = categoryService;
     }
+    @GetMapping
+    public ResponseEntity<?> getAllCategory(){
+        return new ResponseEntity<>(categoryService.getAllCategory(), HttpStatus.OK);
+    }
     @GetMapping("/{id}")
     public ResponseEntity<?> getCategoryById(@PathVariable(value = "id") String id){
         return new ResponseEntity<>(categoryService.getCategoryById(id),HttpStatus.OK);
