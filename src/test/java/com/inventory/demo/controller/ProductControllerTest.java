@@ -30,5 +30,11 @@ class ProductControllerTest {
         ResponseEntity<?> responseEntity = productController.getAllProduct();
         Assert.isTrue(responseEntity.getStatusCode().equals(HttpStatus.OK),"SUCCESS");
     }
-
+    @Test
+    void shouldSaveProduct(){
+        Product product = new Product("id","mesa","mesa1",new Category(),Boolean.TRUE);
+        Mockito.when(productService.saveProduct(Mockito.any(Product.class))).thenReturn(product);
+        ResponseEntity<?> responseEntity = productController.saveProduct(product);
+        Assert.isTrue(responseEntity.getStatusCode().equals(HttpStatus.CREATED),"SUCCESS");
+    }
 }
