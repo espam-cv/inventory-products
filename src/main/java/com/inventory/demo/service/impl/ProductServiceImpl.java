@@ -29,8 +29,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product edictProductById(Product product) {
-        Optional<Product> categoryOptional = productRepository.findById(product.getId());
-        Product productEdict = categoryOptional.get();
+        Optional<Product> productOptional = productRepository.findById(product.getId());
+        Product productEdict = productOptional.get();
         productEdict.setName(product.getName());
         productEdict.setDescription(product.getDescription());
         productEdict.setCategory(product.getCategory());
