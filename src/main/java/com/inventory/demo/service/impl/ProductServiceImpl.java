@@ -23,6 +23,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product getProductById(String id) {
+        return productRepository.findById(id).get();
+    }
+
+    @Override
     public Product saveProduct(Product product) {
         return productRepository.save(product);
     }

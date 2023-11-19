@@ -31,6 +31,13 @@ class ProductServiceTest {
         Assert.isTrue(productListData.get(0).getId().equals("id"),"SUCCESS");
     }
     @Test
+    void shouldGetProductById(){
+        Product product = new Product("id","mesa","mesa1",new Category(),Boolean.TRUE);
+        Mockito.when(productRepository.findById(Mockito.anyString())).thenReturn(Optional.of(product));
+        Product productData = productService.getProductById("id");
+        Assert.isTrue(productData.getId().equals("id"),"SUCCESS");
+    }
+    @Test
     void shouldSaveProduct(){
         Product product = new Product("id","mesa","mesa1",new Category(),Boolean.TRUE);
         Mockito.when(productRepository.save(Mockito.any(Product.class))).thenReturn(product);

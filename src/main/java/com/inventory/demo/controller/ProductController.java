@@ -20,6 +20,10 @@ public class ProductController {
     public ResponseEntity<?> getAllProduct(){
         return new ResponseEntity<>(productService.getAllProduct(), HttpStatus.OK);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getProductById(@PathVariable(value = "id") String id){
+        return new ResponseEntity<>(productService.getProductById(id),HttpStatus.OK);
+    }
     @PostMapping
     public ResponseEntity<?> saveProduct(@RequestBody Product product){
         return new ResponseEntity<>(productService.saveProduct(product),HttpStatus.CREATED);
