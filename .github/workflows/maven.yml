@@ -27,12 +27,12 @@ jobs:
         java-version: '19'
         distribution: 'temurin'
         cache: maven
-    - name: Build Test
-      run: mvn clean install
+    - name: Build
+      run: mvn compile
   test:
 
     needs: build
-    
+
     runs-on: ubuntu-latest
 
     steps:
@@ -44,4 +44,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build Test
-        run: mvn clean install
+        run: mvn test
