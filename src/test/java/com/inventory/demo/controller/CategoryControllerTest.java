@@ -43,4 +43,11 @@ class CategoryControllerTest {
         ResponseEntity<?> responseEntity = categoryController.saveCategory(category);
         Assert.isTrue(responseEntity.getStatusCode().equals(HttpStatus.CREATED),"SUCCESS");
     }
+    @Test
+    void shouldEdictCategory(){
+        Category category = new Category("id","name","description");
+        Mockito.when(categoryService.edictCategoryById(Mockito.any(Category.class))).thenReturn(category);
+        ResponseEntity<?> responseEntity = categoryController.edictCategoryById(category);
+        Assert.isTrue(responseEntity.getStatusCode().equals(HttpStatus.OK),"SUCCESS");
+    }
 }

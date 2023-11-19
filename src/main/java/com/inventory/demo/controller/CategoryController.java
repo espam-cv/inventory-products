@@ -28,6 +28,9 @@ public class CategoryController {
     public ResponseEntity<?> saveCategory(@RequestBody Category category){
         return new ResponseEntity<>(categoryService.saveCategory(category), HttpStatus.CREATED);
     }
-
+    @PutMapping
+    public ResponseEntity<?> edictCategoryById(@RequestBody Category category){
+        return new ResponseEntity<>(categoryService.edictCategoryById(category),HttpStatus.OK);
+    }
 
 }
