@@ -27,7 +27,6 @@ public class ProductController {
     @DeleteMapping
     public ResponseEntity<?> deleteProductById(String id){
         productService.deleteProductById(id);
-        System.out.printf(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
