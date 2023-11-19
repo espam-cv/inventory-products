@@ -16,9 +16,14 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService){
         this.categoryService = categoryService;
     }
-
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getCategoryById(@PathVariable(value = "id") String id){
+        return new ResponseEntity<>(categoryService.getCategoryById(id),HttpStatus.OK);
+    }
     @PostMapping
     public ResponseEntity<?> saveCategory(@RequestBody Category category){
         return new ResponseEntity<>(categoryService.saveCategory(category), HttpStatus.CREATED);
     }
+
+
 }

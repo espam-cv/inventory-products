@@ -15,6 +15,15 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Category getCategoryById(String id) {
+
+
+        
+
+        return categoryRepository.findById(id).get();
+    }
+
+    @Override
     public Category saveCategory(Category category) {
         return categoryRepository.save(category);
     }

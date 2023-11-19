@@ -11,13 +11,21 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.util.Assert;
 
+import java.util.Optional;
+
 @ExtendWith(MockitoExtension.class)
 class CategoryServiceTest {
     @Mock
     private CategoryRepository categoryRepository;
     @InjectMocks
     private CategoryServiceImpl categoryService;
-
+    @Test
+    void shouldGetCategoryById(){
+        Category category = new Category("id","name","description");
+        Mockito.when(categoryRepository.findById(Mockito.anyString())).thenReturn(Optional.of(category));
+        Category categoryData = categoryService.getCategoryById("id");
+        Assert.isTrue(categoryData.getId().equals("id"),"SUCCESS");
+    }
     @Test
     void shouldSaveCategory(){
         Category category = new Category("id","name","description");
