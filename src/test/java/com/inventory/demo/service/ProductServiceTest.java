@@ -26,7 +26,7 @@ class ProductServiceTest {
         List<Product> productList = new ArrayList<>();
         productList.add(new Product("id","mesa","mesa1",new Category(),Boolean.TRUE));
         Mockito.when(productRepository.findAll()).thenReturn(productList);
-        List<Product> categoryListData = productService.getAllProduct();
-        Assert.isTrue(categoryListData.get(0).getId().equals("id"),"SUCCESS");
+        List<Product> productListData = productService.getAllProduct();
+        Assert.isTrue(productListData.get(0).getId().equals("id"),"SUCCESS");
     }
 }
