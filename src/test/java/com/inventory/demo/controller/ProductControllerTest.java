@@ -38,6 +38,13 @@ class ProductControllerTest {
         Assert.isTrue(responseEntity.getStatusCode().equals(HttpStatus.CREATED),"SUCCESS");
     }
     @Test
+    void shouldEdictProduct(){
+        Product product = new Product("id","mesa","mesa1",new Category(),Boolean.TRUE);
+        Mockito.when(productService.edictProductById(Mockito.any(Product.class))).thenReturn(product);
+        ResponseEntity<?> responseEntity = productController.edictProductById(product);
+        Assert.isTrue(responseEntity.getStatusCode().equals(HttpStatus.OK),"SUCCESS");
+    }
+    @Test
     void shouldDelete(){
         Mockito.doNothing().when(productService).deleteProductById(Mockito.any(String.class));
         ResponseEntity<?> responseEntity = productController.deleteProductById("id");

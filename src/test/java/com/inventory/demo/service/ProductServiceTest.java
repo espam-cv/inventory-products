@@ -14,6 +14,7 @@ import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 class ProductServiceTest {
@@ -34,6 +35,14 @@ class ProductServiceTest {
         Product product = new Product("id","mesa","mesa1",new Category(),Boolean.TRUE);
         Mockito.when(productRepository.save(Mockito.any(Product.class))).thenReturn(product);
         Product productData = productService.saveProduct(product);
+        Assert.isTrue(productData.getId().equals("id"),"SUCCESS");
+    }
+    @Test
+    void shouldEdictProduct(){
+        Product product = new Product("id","mesa","mesa1",new Category(),Boolean.TRUE);
+        Mockito.when(productRepository.findById(Mockito.anyString())).thenReturn(Optional.of(product));
+        Mockito.when(productRepository.save(Mockito.any(Product.class))).thenReturn(product);
+        Product productData = productService.edictProductById(product);
         Assert.isTrue(productData.getId().equals("id"),"SUCCESS");
     }
     @Test

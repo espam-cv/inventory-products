@@ -24,6 +24,10 @@ public class ProductController {
     public ResponseEntity<?> saveProduct(@RequestBody Product product){
         return new ResponseEntity<>(productService.saveProduct(product),HttpStatus.CREATED);
     }
+    @PutMapping
+    public ResponseEntity<?> edictProductById(@RequestBody Product product){
+        return new ResponseEntity<>(productService.edictProductById(product),HttpStatus.OK);
+    }
     @DeleteMapping
     public ResponseEntity<?> deleteProductById(String id){
         productService.deleteProductById(id);
