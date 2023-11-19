@@ -45,3 +45,12 @@ jobs:
           cache: maven
       - name: Build Test
         run: mvn test
+  approval:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Approval
+        id: approval
+        with:
+          args: 'Approve deployment'
+        run: echo "Deployment approved by ${{ github.actor }}"
