@@ -11,6 +11,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
@@ -19,6 +21,14 @@ class CategoryServiceTest {
     private CategoryRepository categoryRepository;
     @InjectMocks
     private CategoryServiceImpl categoryService;
+    @Test
+    void shouldGetAllCategory(){
+        List<Category> categoryList = new ArrayList<>();
+        categoryList.add(new Category("id","name","description"));
+        Mockito.when(categoryRepository.findAll()).thenReturn(categoryList);
+        List<Category> categoryListData = categoryService.getAllCategory();
+        Assert.isTrue(categoryListData.get(0).getId().equals("id"),"SUCCESS");
+    }
     @Test
     void shouldGetCategoryById(){
         Category category = new Category("id","name","description");
