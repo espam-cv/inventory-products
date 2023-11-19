@@ -18,7 +18,13 @@ class CategoryControllerTest {
     private CategoryService categoryService;
     @InjectMocks
     private CategoryController categoryController;
-
+    @Test
+    void shouldGetCategoryById(){
+        Category category = new Category("id","name","description");
+        Mockito.when(categoryService.getCategoryById(Mockito.anyString())).thenReturn(category);
+        ResponseEntity<?> responseEntity = categoryController.getCategoryById("id");
+        Assert.isTrue(responseEntity.getStatusCode().equals(HttpStatus.OK),"SUCCESS");
+    }
     @Test
     void shouldSaveCategory(){
         Category category = new Category("id","name","description");
