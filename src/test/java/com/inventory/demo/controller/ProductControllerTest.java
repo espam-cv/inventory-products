@@ -37,4 +37,10 @@ class ProductControllerTest {
         ResponseEntity<?> responseEntity = productController.saveProduct(product);
         Assert.isTrue(responseEntity.getStatusCode().equals(HttpStatus.CREATED),"SUCCESS");
     }
+    @Test
+    void shouldDelete(){
+        Mockito.doNothing().when(productService).deleteProductById(Mockito.any(String.class));
+        ResponseEntity<?> responseEntity = productController.deleteProductById("id");
+        Assert.isTrue(responseEntity.getStatusCode().equals(HttpStatus.OK),"SUCCESS");
+    }
 }
